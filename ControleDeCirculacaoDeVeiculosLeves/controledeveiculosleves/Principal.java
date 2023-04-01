@@ -14,6 +14,11 @@ public class Principal{
             op = menu();
             if(op == 1){
                 marcarSaida();
+            }else if(op == 2){
+                marcarEntrada();
+            }else{
+                System.out.println("Obrigado por usar meu sistema");
+                System.out.println("fim do programa");
             }
         }
     }//main
@@ -68,5 +73,20 @@ public class Principal{
         System.out.print("Opcao: ");
         veiculo.setAtividade(scan.nextLine());
         listaVeiculo.add(veiculo);
+    }
+    public static ArrayList<Veiculo> imprimirSaida(Veiculo veic){
+        System.out.println("Data e Hora de Saída" + dataAtual);
+        System.out.println("Nome do Motorista: " + veic.getMotorista());
+        System.out.println("Veículo: " + veic.getVeiculo());
+        System.out.println("Placa: " + veic.getHoraDeSaida());
+        System.out.println("Ativiade: " + veic.getAtividade());
+        return listaVeiculo;
+    }
+    public static void imprimirTodos(){
+
+    }
+    public static ArrayList<Veiculo> imprimirPorPlaca(){
+
+        return listaVeiculo;
     }
 }//global

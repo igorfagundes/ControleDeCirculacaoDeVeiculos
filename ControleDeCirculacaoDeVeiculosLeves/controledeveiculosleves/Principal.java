@@ -1,4 +1,5 @@
 package controledeveiculosleves;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -24,8 +25,9 @@ public class Principal{
                 Scanner scan = new Scanner(System.in);
                 System.out.println("Digite a placa que deseja procurar");
                 System.out.print("Opcao: ");
-                String placa = scan.nextLine();
-                imprimirPorPlaca(placa);
+                String veic = scan.nextLine();
+                imprimirPorPlaca(veiculo);
+                
             }else{
                 System.out.println("Obrigado por usar meu sistema");
                 System.out.println("fim do programa");
@@ -85,7 +87,7 @@ public class Principal{
         System.out.println("Data e Hora de Saída" + dataAtual);
         System.out.println("Nome do Motorista: " + veic.getMotorista());
         System.out.println("Veículo: " + veic.getVeiculo());
-        System.out.println("Placa: " + veic.getHoraDeSaida());
+        System.out.println("Placa: " + veic.getPlaca());
         System.out.println("Atividade: " + veic.getAtividade());
         return listaVeiculo;
     }
@@ -93,35 +95,33 @@ public class Principal{
         System.out.println("Data e Hora de Entrada" + dataAtual);
         System.out.println("Nome do Motorista: " + veic.getMotorista());
         System.out.println("Veículo: " + veic.getVeiculo());
-        System.out.println("Placa: " + veic.getHoraDeSaida());
+        System.out.println("Placa: " + veic.getPlaca());
         System.out.println("Atividade: " + veic.getAtividade());
         return listaVeiculo;
     }
     public static void imprimirTodosSaida(){
-        ArrayList<Veiculo> listaVeiculos = null;
+        ArrayList<Veiculo> listaVeiculos = listaVeiculo;
         for(int i = 0; i < listaVeiculos.size();i++){
             listaVeiculo.get(i);
             imprimirSaida(veiculo);
         }
     }
     public static void imprimirTodosEntrada(){
-        ArrayList<Veiculo> listaVeiculos = null;
+        ArrayList<Veiculo> listaVeiculos = listaVeiculo;
         for(int i = 0; i < listaVeiculos.size();i++){
             listaVeiculo.get(i);
             imprimirEntrada(veiculo);
         }
     }
-    public static ArrayList<Veiculo> imprimirPorPlaca(String veic){
-        Veiculo veiculo = null;
+    public static ArrayList<Veiculo> imprimirPorPlaca(Veiculo veic){
         for(int i = 0;i < listaVeiculo.size();i++){
             veiculo = listaVeiculo.get(i);
             if(listaVeiculo.get(i).equals(veic)){
-                imprimirTodosEntrada();
-                imprimirTodosSaida();
-            }else if(listaVeiculo.get(i).equals(veic) != listaVeiculo.get(i).equals(veic)){
-                System.out.println("Veiculo não encontrado!");
+                veiculo = veic;
             }
         }
+        imprimirEntrada(veic);
+        imprimirSaida(veic);
         return listaVeiculo;
     }
 }//global
